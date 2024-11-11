@@ -1,0 +1,69 @@
+The Backend Bootcamp:-
+
+Node.js Introduction:-
+
+    1995 - The birth of JavaScript
+    code name:- Mocha
+    renamed:- LiveScript
+    finally:- JavaScript
+
+    1996:- Microsoft creating script language JScript.
+    1997:- ECMA International created the first official standard specification
+    for JavaScript ECMA-262 or ISO/IEC 16262.
+    https://ecma-international.org/publications-and-standards/standards/ecma-262/
+
+    6th version - ECMA2015
+    8th version - ECMA2017
+    9th version - ECMA 2018
+
+
+    Background:- 
+        Node.js was originally developed by Ryan Dahl.
+        PHP and Ruby.
+        RAILS.
+        File Upload
+        Mongrel was used as initial solution.. but was not happy.
+        C idea was dropped due lack for developers community.
+        Using Haskell:- Not completely satisfied.
+
+    The Birth of Node.js:-
+        The satisfaction of using a language happened with - JavaScript.
+        2008:- V8 Engine. Open Source
+        2009:- Node.js
+
+        Node.js is a system which consists of multiple sub systems that put together 
+        makes the whole architecture of Node.js
+
+        Node.js
+            JavaScript file => JS engine => libuv
+    
+    Breaktthrough of Node.js:-
+        JSConfEU - Berlin: Sept 2009
+        Joyent
+
+        ISAAC Schlueter:- Node Package Manager
+
+        Ryan Dahl: Node JS
+        https://www.youtube.com/watch?v=EeYvFl7li9E
+
+    Support for Windows :-
+        0.6 => 2011
+        0.6.3 => 2011, npm became the integral part of Node.js software platform.
+    
+    2012:- Ryan Dahl announced his resignation.
+
+    io.js/fork of node.js:- Node.js Foundation was found.
+
+    io.js and node.js => Node.js, Node.js Foundation.
+
+    JS foundation + Node.js Foundation => OpenJS Foundation
+
+    2015:- First Major version was release. 1.X
+    
+
+
+
+
+
+
+    

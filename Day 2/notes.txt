@@ -1,0 +1,108 @@
+Node.js Introduction II:-
+
+Node.js Organization:-
+
+Technical Steering Committee:-
+    TSC is responsible for further development of Node.js platform.
+    Number of members are generally from 6 to 12 in number.
+    - Setting the Technical Direction of Node.js platform
+    - Performing Project and Process control.
+    - Defining the Contribution Policy
+    - Managing the GitHub
+    - Establishing the Conduct guidelines
+    - Maintaining and managing the list of Collaborators.
+
+Collaborators:-
+    Open source project in GitHub Repository. Group of People
+    called Collaborators have write access to the repository.
+
+    Typical tasks:-
+    - Support the users and new Collaborators
+    - Improving the Node.js source code.
+    - Documentation
+    - Reviewing of Pull Requests and issues with comments.
+    - Participate in Work groups
+    - Merging of Pull Requests.
+
+Community Committee:-
+    CommComm takes of entire Node.js community and has primary focus on
+    education and culture.
+
+Work Groups:-
+    - Release - This work group manages the release process of Node.js platform,
+    define the content of the release and also takes care of LTS.
+    - Streams - This group is responsible for developing and improving Streams API.
+    - Docker - This work group takes care of official docker images of Node.js platform
+
+OpenJS Foundation:-
+    The OpenJS is like an Umbrella for Node.js further development.
+    It is working in the same way like Linux Foundation works for Linux operating system.
+
+
+How much JavaScript I need to know to use Node.js?
+    Beginner level knowledge, means aware of language concepts and
+    have some hands on coding experience and keen to learn more.
+
+Benefits of Node.js:-
+    - We see Results very quickly.
+    - light weight
+    - Initialization of project is very fast.
+    - Changing Requirements can be adapted hassle-freely
+    - Reliable basis
+    - Developers who are already working with JavaScript they familiarize quickly with the
+        Node.js platform.
+
+Areas of Use of Node.js:-
+     Right from small tools like command line tool to a big web application server
+     Node.js as a Server side platform is capable of use in almost all sorts of projects
+     or application.
+
+     Since it has:-
+
+     Pure JavaScript:- Developer doesn't need to know any other language dialect.
+    
+     Optimized Engine:- Based V8 engine.
+
+     Nonblocking I/O:- All the operations which don't take place directly into the
+        Node.js platform are out-sourced to operating system or other applications.
+    
+     Single Threaded:- A typical Node.js application runs in a single process.
+
+
+Setting Up developer environment:-
+    Installation:-
+
+    <major>.<minor>.<patch>
+
+    node-v-<major>.<minor>.<patch>-<osname>.x64.tar.xz
+
+    Versioning & release cycle:-
+        The committee has had decided to release a stable version every six months.
+
+        Typical release = Initial Release > Active LTS > Maintenance/       >   End of Line
+                                                         Maintenance LTS
+
+
+        Two types of releases are:-
+            - Normal Stable version = 12 Months
+            - LTS release or version = 30 Months
+
+        Releases either happens in April month and October month.
+
+        Version     Status      Initial     Active LTS      Maintenance     End of Line
+                                Release     Start           LTS Start       
+
+        v20         Pending     April2022   Oct2022         Oct 2023        April2025    
+        v21         Current     Oct2022                                     Oct 2023
+
+
+        Long Term Support (LTS):-
+        All Odd number versions are normal stable releases but every even number release gets
+        transitioned in to LTS release when next odd version is released. See above table.
+
+        In 12 Month LTS Suppport following may be the content of release:-
+        - Bug Fixes
+        - Security Fixes
+        - npm updates (minor)
+        - Performance optimization(if it is not impacting current Applications).
+        - Code updates which are necessary for future releases.
