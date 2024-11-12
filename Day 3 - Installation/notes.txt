@@ -1,0 +1,78 @@
+Environment Setup:
+
+Installation:-
+    Node.js runs stably and reliably on all the three Operating Systems - 
+    Linux, Windows & macOS.
+    semver algo.
+    <major>.<minor>.<patch>
+    Linux:- node-v<major>.<minor>.<patch>-linux-x64-tar.xz
+    Windows:- node-v<major>.<minor>.<patch>-windows-x64.zip
+
+Since, we have two types of choices from type of package or release of Node.js- 
+
+    - Current
+    - LTS
+
+Recommended is LTS.
+
+There are below mentioned ways to install:-
+ - Binary
+ - Default package manager of Operating System
+ - Prebuilt Installer
+ - Third party package manager (NVM etc)
+ - Source code.
+
+
+Linux :-
+
+    Installing the Linux Binaries:-
+        - Downloading the desired version with the help of wget
+        - Unpacking it in /opt directory
+            - run node from the directory
+            - it doesnt have the npm
+            - requires config setup for node path
+    
+    Installing via default Package manager:_
+        1. sudo apt-get install nodejs
+
+            Advantage is when you update the underlying system the nodejs will update automatically.
+            Drawback is install from the default repository which is very less frequently update
+        2. By adding another repository:-
+
+            https://github.com/nodesource/distributions
+            https://github.com/nodesource/distributions?tab=readme-ov-file#ubuntu-versions
+
+
+    Node Version manager (nvm):-
+
+        From official website(https://nodejs.org/en/download/package-manager):-
+
+        #1 installs nvm (Node Version Manager)
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+
+
+        #2 download and install Node.js (you may need to restart the terminal)
+        nvm install 22 
+
+        #3 verifies the right Node.js version is in the environment
+        node -v # should print `v22.11.0`
+
+        #4 verifies the right npm version is in the environment
+        npm -v # should print `10.9.0`
+
+
+    // website for official nvm
+    // https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating
+    // Please see the commands by scrolling or search for "nvm ls"
+
+        Shutdown and start or Restart
+
+        node -v
+            This command should fail
+
+        nvm ls
+            shows the list of locally installed versions of Node.js
+
+        nvm use 22
+            
+        node -v
