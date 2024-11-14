@@ -1,0 +1,109 @@
+Node.js Fundamentals:-
+
+    How to use Node.js?
+    We can use Node.js in two different ways:-
+    - The Interactive Mode (simple experiments)
+    - Using the Node executable by providing application start file.
+
+
+    Interactive Mode:-
+    You can go to the interactive mode just by entering command mentioned below:-
+    node
+
+    Once you hit enter on 'node' command then you will be taken to the Interactive mode
+    and this type of User Interface is referred to as read-eval-print-loop(REPL).
+
+    What does REPL mean?
+    READ => This is Read and it's job is to take input from the user via command from console.
+    And send that input to the next step. In this case, next step is Eval.
+    Eval => This is Eval and it's job is to take the input from READ start processing it.
+    Once the processing of the input is complete the result is given to the next step.
+    In this case, next step is Print.
+    Print => This is Print, and it's job is to take the input given by Eval or last step and
+    display that back to the console.
+    Loop => This is loop, takes user or makes command line available for Read again.
+
+    General Use:-
+     Once you get into the REPL Mode or Interactive Mode of Node.js i.e by typing and executing
+     'node' command
+     console.log("Hello Students!");    // Enter key or return key
+
+     Read => Eval => Print => Loop
+
+
+    Defining a Function in REPL:-
+
+        function greet(name){
+            console.log(`Hello ${name}`);
+        }
+
+    Interdependent Command Lines:-
+        If we write one command and hit enter or return key this goes through REPL process.
+        And, again if we try to use something from earlier command is easily achievable in
+        Node.js REPL.
+
+        $ node
+        > const longHello = "Helloooo";
+        > console.log(longHello);
+
+
+    Other REPL Commands:-
+     Apart from JavaScript commands that we as a user give to REPL in Interactive mode, it
+     provides us with some more special commands to control the environment.
+
+     All these commands starts with period means '.'.
+
+     Command        Description
+     .break         Terminates the current input. Especially useful in multiline command.
+     .clear         Serves as alias to .break command.
+     .exit          Terminates the Node.js REPL.
+     .help          Shows the list of available commands.
+     .load <file>   Loads a saved session from the file into the current REPL environment.
+     .save <file>   Saves the current session into the file.
+     .editor        Opens the editor mode where you can write a block of code.
+                    Ctrl + D to execute the code in the editor.
+                    Ctrl + C will end or exit the editor mode without executing the code.
+    
+    Context of REPL:-
+        Node.js REPL provides us with a Global Context. This context you can access anywhere
+        in your program.
+        For Example: you can directly check what are the support HTTP status codes are
+        
+            > http.STATUS_CODES
+
+        There is a special global context variable available to us which is underscore
+        '_'. It holds the result or evaluation of last fired command.
+
+
+    REPL History:-
+        .node_repl_history
+
+        Two Environment Variables which are internally used here for history are:-
+        - NODE_REPL_HISTORY
+        - NODE_REPL_HISTORY_SIZE
+
+    Searching in the REPL:-
+
+        Ctrl+R = Backward Search can be done.
+        Ctrl+S = Forward Search can be done.
+        And choosing the command can be done just by hitting Enter key.
+
+
+    REPL Mode:-
+    
+    There are three modes historically:-
+
+        - Sloppy:- The REPL is set to non-strict mode. The rules of JavaScript strict mode are
+        overridden. And this is the default mode.
+        - Strict:- The REPL is set to follow much more stricter rules for the execution of
+        JavaScript code. The value is 'strict' which activates the strict mode.
+        - Magic:- This is deprecated. It was sort of an alias to Sloppy.
+
+    Asynchronous Operations in REPL:-
+     JavaScript provides us sevaral ways of dealing with asynchrony, like callbacks, promises,
+     async-await etc.
+     In some recent ECMAScript specification they have released a concept of 'top level await'.
+     We can use that as well in REPL - 
+
+    > await Promise.resolve("Info resolved asynchronously using top level await");
+
