@@ -1,0 +1,128 @@
+Node.js Fundamentals:
+    Composition
+
+    The Core: V8 Engine continues...
+
+    Machine Code Generation:-
+        The JIT compiler(The Sparkplug), improves the overall speed of compiling
+        by directly generating native Machine code that is executable.
+        The native machine code that is being executed is analyzed continuosly
+        by the analyzer (part of V8). And, it is justifyable the added efforts of
+        optimization by Turbofan(optimizing compiler), then the identified machine
+        code is sent through Turbofan for further improvement.
+        Because at all times, V8 is aware that how many times a function is getting
+        invoked and how long does it take to execute it.
+
+    
+    Garbage Collection:-
+        Garbage collection refers to the process of clearing up the application's
+        memory area, so that the elements/objects which are no longer used are removed
+        from the memory. So that the free space can be utilized again or made available
+        to the application which is executing.
+
+        1. Scavenge Collector - this is the very fast or fastest and efficient and deals
+        only with the short-lived area.
+
+        2. Mark and Sweep -
+            The entire memory area is looked into.
+            
+            Mark & Sweep 1:-
+                In the first run, it marks the objects to be deleted.
+                In the next run, it deletes the objects.
+
+                Disadvantage:- The deletion creates gaps in memory
+            Mark & Sweep 2:-
+                Marks, & deletes both in the first go itself and 
+                it defragments the memory so as to be smoothly finding 
+                the addresses by application.
+
+
+        Scavenge - 2ms
+        Mark & Sweep 1 - 50ms
+        Mark & Sweep 2 - 100ms
+
+
+    Libraries of Node.js System
+        Event Handling,
+        I/O,
+        Support Functions like Domain Name System (DNS) resolution
+        Encryption etc.
+
+
+        Event Loop:-
+
+            The event driven architecture/event driven programming
+
+            For Example:-
+                myObj.on("myEvent", (data) =>{
+                    console.log(data);
+                });
+
+                myObj.emit("myEvent", "Hello Event Driven Programming.");
+
+
+        The original event loop used in Node.js is based on libev, a library written in 
+        C language that stands for high performance and a wide range of features.
+
+
+        Input & Output:
+            Any server side application or Node.js application typically requires access
+            to the file system for read and write.
+            Like reading and writing to configuration files is a norm in server side 
+            application. Another common example is logging of information in a file.
+
+            Node.js uses the C library libeio for these tasks. It ensures that the write
+            and read operations can take place asynchronously, and thus the library works
+            very closely with the event loop.
+
+        libuv:
+            libuv is responsible for all asynchronous I/O operations. This means that
+            all access to the file system, whether read or write access, is performed via
+            libuv's interfaces are provided to perform operations by Node.js.
+            It was especially introduced to perform Event Loop and I/O in platform indepedent
+            manner i.e. also on Windows.
+        
+        Domain Name System
+            Since, all computers in a network or internet have an IP address.
+            But also given a domain name like www.google.com. So to resolve IP
+            address from domain name DNS name resolution is used.
+            And many at times, reverse possibility is also there, like we have the 
+            IP but want to know the Domain Name associated with it.
+            In Node.js, if you want to connect to a web service or want to read the
+            web page, DNS is used.
+
+            Inernally, Node.js doesn't handle the name resolution by itself instead
+            passes the request to the C-Ares library.
+        
+        Crypto
+         The crypto component of Node.js provides you with several encryption options for 
+         development purposes. This component is based on OpenSSL.The crypto module allows
+         you to encrypt data with different algorithms as well as create digital signatures
+         within the application.
+        
+        Zlib
+            Due to limited limited bandwidth of internet at your customer side or even
+            at your server side both, many at times reducing the size of the content to
+            be transferred is a greater option.
+            In Node.js Zlib takes care of compression and decomperssion processes.
+            Deflate
+            Gzip.
+
+        HTTP Parser
+            Just like other libraries that Node.js system depends on it also doesn't
+            write code for HTTP parsing, it relies on C project that deals with HTTP
+            Parsing since, it is a lengthy or laborious task so it requires very fast
+            processing, that's where this C library helps to create Full Fledge web
+            Applications in Node.js
+    
+
+
+
+        
+
+
+
+
+
+
+
