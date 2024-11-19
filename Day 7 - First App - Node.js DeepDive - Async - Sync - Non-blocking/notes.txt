@@ -1,0 +1,53 @@
+Our first node app
+
+Node.js Vs JavaScript:
+    Node.is a runtime that allows JS code to be executed outside the Browser.
+    Before the creation of Node.js it was Browsers only where JavaScript could run.
+    JavaScript is a Programming Language, it requires a software knows as JavaScript engine
+    for compilation and runtime to run the JS code.
+    Node.js is a runtime that has the capability to compile and execute JavaScript code.
+
+Globals:
+
+    There are some basic differences between globals or APIs offered in Browser and APIs and globals
+    available in Node.js
+
+    Browser         Node.js
+    window          global
+    document        process
+    history         module
+    location        __filename and __dirname
+    navigator       require()
+
+
+Node.js Composition Deep Dive:
+
+Asynchronous Vs Synchronous code
+   
+    List of Goals:-
+        - DSA
+        - HTML/CSS
+        - JavaScript
+        - Node.js
+        - Get hired or start working professionally
+
+
+        3 + 3 + 3 + 3  = 12 months => Preparing for interview and then you will get hired.
+
+    The above is synchronous way of dealing with goals.
+
+    1 + 1 + 1 + 1 + 1 = get hired
+
+
+Aynchronous callbacks:
+
+Non-blocking Input & Output:
+    JSON.stringify({coding: 'fun'});
+    //another code
+
+Is JavaScript asynchronous?
+
+
+
+
+
