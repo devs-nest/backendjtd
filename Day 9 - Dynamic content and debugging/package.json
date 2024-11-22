@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "nodemon": "^3.1.7"
+  },
+  "scripts": {
+    "start": "nodemon server.mjs --config nodemon.json",
+    "inspect": "nodemon --inspect server.mjs --config nodemon.json"
+  }
+}
