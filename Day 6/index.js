@@ -1,6 +1,6 @@
 const { json } = require("body-parser");
 const express = require("express")
-const PORT = 3000
+const PORT =  process.env.PORT || 3000
 const fs = require('fs')
 const path = require('path');
 console.log(__dirname)
