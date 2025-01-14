@@ -8,7 +8,7 @@ const filePath = path.join(__dirname,"data.json")
 
 const app = express()
 
-app.use(express.json())
+app.use(express.json()) //MiddleWares
 
 function readData(){
     const data = fs.readFileSync(filePath,"utf-8");
