@@ -7,19 +7,33 @@ function UserPage({ token }) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:3005/user', {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
+                // const response = await axios.get('http://localhost:3005/user', {
+                //     headers: {
+                //         Authorization: `Bearer ${token}`,
+                //     },
+                // });
+                const response = await fetch("http://localhost:3005/user",{
+                    method: 'GET',
+                    headers : {
+                        Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+                        // 'Content-Type': 'application/json',
                     },
                 });
-                setMessage(response.data.message);
+                if (!response.ok) {
+                    // redirect to /login page and delete localStorage
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                setMessage(data.message);
+                
             } catch (error) {
                 setMessage('Error fetching user data');
             }
         };
 
-        if (token) fetchData();
-    }, [token]);
+        fetchData();
+    }, []);
 
     return (
         <div>

@@ -1,10 +1,6 @@
 // const { json } = require("body-parser");
 const express = require("express")
 const PORT = 3002
-const fs = require('fs')
-const path = require('path');
-console.log(__dirname)
-const filePath = path.join(__dirname,"data.json")
 const { Client } = require('pg');
 
 const client = new Client({

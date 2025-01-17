@@ -9,7 +9,9 @@ function Login({ setToken }) {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:3005/login', form);
-            setToken(response.data.token); // Save the token in App state
+
+            // setToken(response.data.token); // Save the token in App state
+            localStorage.setItem('authToken', response.data.token);
             setMessage('Login successful!');
         } catch (error) {
             setMessage(error.response?.data?.message || 'Error logging in');
