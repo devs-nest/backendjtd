@@ -8,11 +8,17 @@ function Login({ setToken }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3005/login', form);
+            if(username.length<5){
+                showError("Invalid username")
+            }
+            else{
+                const response = await axios.post('http://localhost:3005/login', form);
 
-            // setToken(response.data.token); // Save the token in App state
-            localStorage.setItem('authToken', response.data.token);
-            setMessage('Login successful!');
+                // setToken(response.data.token); // Save the token in App state
+                localStorage.setItem('authToken', response.data.token);
+                setMessage('Login successful!');
+            }
+          
         } catch (error) {
             setMessage(error.response?.data?.message || 'Error logging in');
         }
