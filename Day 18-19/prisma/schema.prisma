@@ -43,6 +43,6 @@ model Post {
 
 model Category {
    id        Int      @id @default(autoincrement()) 
-   name String
+   name String @unique
    post Post[] @relation("PostCategories")
 }

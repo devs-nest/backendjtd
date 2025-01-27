@@ -1,8 +1,20 @@
 const prisma = require('../prisma/prismaClient');
 
-const getUserProfileByUserId = async (id, data) => {
-  
-};
+const getUserProfileByUserId = async (id) => {
+        // const id = req.user.id
+  const userProfile = await prisma.userProfile.findUnique({
+    where: {userId : id},
+    select: {
+        id:true,
+        bio: true
+    }
+    // include: {
+    //     user:true
+    // }
+  });
+  return userProfile
+}
+
 
 const createUserProfile = async (userId, bio) => {
     try{

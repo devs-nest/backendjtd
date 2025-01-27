@@ -18,8 +18,9 @@ const createUserProfile = async (req, res) => {
 };
 
 const getUserProfileByUserId = async (req, res) => {
+  const id = parseInt(req.params.id)
   try {
-    const users = await userProfileService.getUserProfileByUserId();
+    const users = await userProfileService.getUserProfileByUserId(id);
     res.status(200).json(users);
   } catch (error) {
     res.status(400).json({ error: error.message });
