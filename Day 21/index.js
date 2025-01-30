@@ -1,8 +1,28 @@
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+
+global.require = require;
+
 const express = require('express');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+// const bcrypt = require('bcrypt');
+// const jwt = require('jsonwebtoken');
 const { Pool } = require('pg');
-var nodemailer = require('nodemailer');
+// var nodemailer = require('nodemailer');
+import { rateLimit } from 'express-rate-limit'
+var cron = require('node-cron');
+
+
+const limiter = rateLimit({
+	windowMs: 15 * 60 * 1000, // 15 minutes
+	limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+})
+
+cron.schedule('* * * * *', () => {
+    console.log('running every minute 1, 2, 4 and 5');
+  });
+
 
 // Express app setup
 const app = express();
@@ -22,6 +42,11 @@ const pool = new Pool({
 app.use(express.json());
 
 // User Registration
+
+app.get('/reset_password', limiter, (req, res) => {
+	res.json({ message: `Welcome, use` });
+})
+
 app.post('/register', async (req, res) => {
     const { username, password, role } = req.body;
 
@@ -36,6 +61,12 @@ app.post('/register', async (req, res) => {
             [username, hashedPassword, role]
         );
         res.status(201).json({ message: 'User registered', userId: result.rows[0].id });
+
+        const token = jwt.sign({ userId: user.id, role: user.role }, JWT_SECRET, { expiresIn: '1h' });
+
+        link = `${process.env.domain}/verify/${token}`
+
+
     } catch (error) {
         if (error.code === '23505') {
             res.status(400).json({ message: 'Username already exists' });
@@ -72,6 +103,16 @@ app.post('/login', async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 });
+
+// app.get('/verify/:token', async (req, res) => {
+//     const token = req.params.token
+//     jwt.verify(token, JWT_SECRET, (err, user) => {
+//         req.user = user;
+//     })
+//     if(user){
+        
+//     }
+// });
 
 // Authentication Middleware
 const authenticateToken = (req, res, next) => {
@@ -113,3 +154,4 @@ app.get('/user', authenticateToken, (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+

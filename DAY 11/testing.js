@@ -1,9 +1,14 @@
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+
+global.require = require;
+
 const { Pool } = require("pg");
 const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cors = require('cors');
-
+import { rateLimit } from 'express-rate-limit'
 // const { Client } = require('pg');
 
 // Express app setup
@@ -23,6 +28,21 @@ const client = new Pool({
 });
 
 app.use(cors()); // Enable CORS for all origins
+
+
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+})
+
+app.get('/reset_password', limiter, (req, res) => {
+	res.json({ message: `Welcome, user` });
+})
+
+
 
 // // OR customize the configuration
 // app.use(cors({
@@ -45,15 +65,17 @@ app.use(cors()); // Enable CORS for all origins
 // };
 
 // runQuery();
-const authorizeRole = (role) =>{
-    return (req,res,next) =>{
-        if (req.user.role != role) {
-            return res.status(403).json({ message: 'Access forbidden: Insufficient permissions' });
-        }
-        next();
-    }
+// const authorizeRole = (role) =>{
+//     // req.role_type = "admin"
+//     next();
+//     // return (req,res,next) =>{
+//     //     if (req.user.role != role) {
+//     //         return res.status(403).json({ message: 'Access forbidden: Insufficient permissions' });
+//     //     }
+//     //     next();
+//     // }
     
-}
+// }
 
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];
@@ -65,6 +87,7 @@ const authenticateToken = (req, res, next) => {
     if (err) {
       return res.status(403).json({ message: "Invalid token" });
     }
+    
     req.user = user
     next();
   });
@@ -138,7 +161,7 @@ app.get("/user", authenticateToken, (req, res) => {
   res.json({ message: `Welcome, user with ID: ${req.user.role}` });
 });
 
-app.get("/admin", authenticateToken,authorizeRole("admin"), (req, res) => {
+app.get("/admin", authenticateToken, (req, res) => {
     console.log("YAYYYYYY");
     res.json({ message: `Welcome, admin with ID: ${req.user.role}` });
   });
@@ -147,3 +170,5 @@ app.get("/admin", authenticateToken,authorizeRole("admin"), (req, res) => {
 app.listen(PORT, () => {
   console.log("property of JTD BACKEND");
 });
+
+

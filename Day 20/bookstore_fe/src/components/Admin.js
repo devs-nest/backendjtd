@@ -1,5 +1,9 @@
-import React  from 'react'
+import React, {useEffect, useState} from 'react'
+import RentBookComponent from "./RentBookComponent";
+import ReturnBookComponent from "./ReturnBookComponent";
+import AddBookComponent from "./AddBookComponent";
 
+import axios from 'axios';
 
 function Admin() {
     const books = [{
@@ -21,14 +25,30 @@ function Admin() {
         price:170
     }]
 
+    const [openDropdown, setOpenDropdown] = useState(null);
+    const toggleDropdown = (dropdown) => {
+        setOpenDropdown(openDropdown === dropdown ? null : dropdown);
+    };
+
     
     
     return (
         <div>
-            <h2>Admin Dashboard</h2>
-            <button>RENT OUT</button>
-            <button>Return Book</button>
-            <button>Add a book</button>
+             <div>
+                <button onClick={() => toggleDropdown("rent")}>Rent a Book</button>
+                {openDropdown === "rent" && <div className="dropdown"><RentBookComponent /></div>}
+            </div>
+
+            <div>
+                <button onClick={() => toggleDropdown("return")}>Return a Book</button>
+                {openDropdown === "return" && <div className="dropdown"><ReturnBookComponent /></div>}
+            </div>
+
+            <div>
+                <button onClick={() => toggleDropdown("add")}>Add a Book</button>
+                {openDropdown === "add" && <div className="dropdown"><AddBookComponent /></div>}
+            </div>
+            
             <table border="1">
                 <thead>
                     <tr>
