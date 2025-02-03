@@ -6,7 +6,7 @@ const register = async (data) => {
 
     const user = await pool.query(
       "INSERT INTO users ( name, email, password, role) VALUES ($1, $2, $3, $4)",
-      [data.name, data.email, data.hashedPassword, data.role]
+      [data.name, data.email, data.password, data.role]
     );
     return user
   };

@@ -9,7 +9,7 @@ const ReturnBookComponent = () => {
     useEffect(() => {
         const fetchCustomers = async () => {
             try {
-                const response = await axios.get("http://localhost:3001/customers", {
+                const response = await axios.get("http://localhost:3001/api/admin/getCustomers", {
                     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
                 });
                 setCustomers(response.data);

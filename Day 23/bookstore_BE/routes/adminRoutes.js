@@ -9,7 +9,7 @@ router.post(
   authMiddlewares.authorizeRole("admin"),
   adminController.rentBook
 );
-router.get(
+router.put(
   "/returnBook",
   authMiddlewares.authenticateToken,
   authMiddlewares.authorizeRole("admin"),
@@ -21,11 +21,17 @@ router.post(
   authMiddlewares.authorizeRole("admin"),
   adminController.addBook
 );
-router.get(
-  "/editBook",
+router.put(
+  "/editBook/:id",
   authMiddlewares.authenticateToken,
   authMiddlewares.authorizeRole("admin"),
   adminController.editBook
+);
+router.get(
+  "/getCustomers",
+  authMiddlewares.authenticateToken,
+  authMiddlewares.authorizeRole("admin"),
+  adminController.getCustomers
 );
 
 module.exports = router;
